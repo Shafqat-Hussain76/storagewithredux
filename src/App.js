@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { LoadBlockcahin } from "./redux/appreducer";
+
 
 function App() {
+  const dispatch = useDispatch();
+  const {contractProvider, contractSigner, accounts} = useSelector((e)=>e.storage);
+  const [val, setVal] = useState("d");
+  
+  
+  const getval = async ()=>{
+    try {
+      let str = await contractProvider.greet();
+      console.log(await contractProvider.greet())
+      setVal(str);
+
+    }catch(err){
+      console.log(err);
+    }
+ 
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Shafqat</h1>
+    
+      <button onClick={()=>dispatch(LoadBlockcahin())}>Metamask</button>
+      <button onClick={()=>getval}>Values</button>
+      {val}
     </div>
   );
 }
