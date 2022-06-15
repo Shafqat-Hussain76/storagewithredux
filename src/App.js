@@ -1,35 +1,30 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { LoadBlockcahin } from "./redux/appreducer";
+import { LoadBlockchain } from "./redux/storageslicer";
 
+const App = ()=>{
+    const list = useSelector((e)=>e.metaconnect);
+    const dispatch = useDispatch();
+    const {contractProvider, contractSigner, accounts} = list;
 
-function App() {
-  const dispatch = useDispatch();
-  const {contractProvider, contractSigner, accounts} = useSelector((e)=>e.storage);
-  const [val, setVal] = useState("d");
-  
-  
-  const getval = async ()=>{
-    try {
-      let str = await contractProvider.greet();
-      console.log(await contractProvider.greet())
-      setVal(str);
-
-    }catch(err){
-      console.log(err);
+    const [val, setVal] =useState("dd");
+    const metahand = ()=>{
+        dispatch(LoadBlockchain());
     }
- 
-  }
-  
-  return (
-    <div className="App">
-      <h1>Shafqat</h1>
-    
-      <button onClick={()=>dispatch(LoadBlockcahin())}>Metamask</button>
-      <button onClick={()=>getval}>Values</button>
-      {val}
-    </div>
-  );
+    const getVal = async ()=>{
+        const newval = await contractProvider.greet();
+        console.log(newval);
+        setVal(newval);
+    }
+    console.log(accounts);
+    return (
+        <>
+        {val}
+        <h1>Shafqat HUssain</h1>
+        <button onClick={()=>metahand()}>Connect Metamask</button>
+        <button onClick={()=>getVal()}>Get Val</button>
+        </>
+    )
 }
 
 export default App;
