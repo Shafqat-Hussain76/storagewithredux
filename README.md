@@ -7,6 +7,10 @@ This project demonstrates
 4) EtherJS is used 
 5) React (redux-store) is used.
 
+The Dapp is deployed at:-
+
+https://pleasant-temper.surge.sh/
+
 
 The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
 
