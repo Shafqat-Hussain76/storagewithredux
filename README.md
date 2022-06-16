@@ -1,6 +1,12 @@
 # Advanced Sample Hardhat Project
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+This project demonstrates 
+1) Hardhat built-in contract Greetr.sol is used. The idea is to show the value of variable greeting in the contract
+2) Uint test with etherJs
+3) the contract is deployed on ropsten using hardhat
+4) EtherJS is used 
+5) React (redux-store) is used.
+
 
 The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
 

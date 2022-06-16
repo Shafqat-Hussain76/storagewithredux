@@ -1,4 +1,4 @@
-module.exports = {
+/* module.exports = {
   env: {
     browser: false,
     es2021: true,
@@ -13,6 +13,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
   },
+  
   overrides: [
     {
       files: ["hardhat.config.js"],
@@ -20,3 +21,4 @@ module.exports = {
     },
   ],
 };
+*/
