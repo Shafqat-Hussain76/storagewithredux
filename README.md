@@ -9,7 +9,7 @@ This project demonstrates
 
 The Dapp is deployed at:-
 
-https://greetingvalue-reduxstore.surge.sh/
+http://storage-reduxstore.surge.sh/
 
 
 The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.

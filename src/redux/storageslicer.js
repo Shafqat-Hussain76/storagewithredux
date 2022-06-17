@@ -1,12 +1,20 @@
 import Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ethers } from "ethers";
-const contractAddress = "0xCF6bfd813F5811a8C0124B50daa997ED5b2ead4b";// Ropsten
+const contractAddress = "0x2675FAbBaD05A107b1C52C9Dc49B410eA04b58d4";// Ropsten
 
 const initialState = {
     contractProvider: null,
     contractSigner: null,
-    accounts: []
+    accounts: [],
+    history : {
+        record : [
+            {
+                saveval: null,
+                address:null,
+            }
+        ]
+    }
 };
 
 export const LoadBlockchain = createAsyncThunk("LoadBlockchain", async (_, thinkAPI)=>{
@@ -32,7 +40,11 @@ export const LoadBlockchain = createAsyncThunk("LoadBlockchain", async (_, think
 export const storageslice = createSlice({
     name: "storage",
     initialState,
-    reducers:{},
+    reducers:{
+        added : (state, action)=>{
+            state.history.record.push(action.payload);
+        }
+    },
     extraReducers: {
         [LoadBlockchain.fulfilled.toString()]:(state, {payload})=>{
             state.contractProvider= payload?.contractProvider;
@@ -42,3 +54,4 @@ export const storageslice = createSlice({
     }
 })
 export const storageReducer = storageslice.reducer;
+export const { added } = storageslice.actions;

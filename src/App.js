@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LoadBlockchain } from "./redux/storageslicer";
+import { added } from "./redux/storageslicer";
 
 const App = ()=>{
     const list = useSelector((e)=>e.metaconnect);
+    const oldval = useSelector((e)=>e.metaconnect.history.record);
+    console.log(oldval);
     const dispatch = useDispatch();
     const {contractProvider, contractSigner, accounts} = list;
 
@@ -21,6 +24,11 @@ const App = ()=>{
         try {
             const newval = await contractSigner.setGreeting(value);
             await newval.wait();
+            const payload = {
+                saveval: newVal,
+                address:accounts,
+            }
+            dispatch(added(payload));
 
         }catch(err){
             console.log(err);
@@ -40,6 +48,14 @@ const App = ()=>{
         <button onClick={()=>getVal()}>Get current value of variable</button>
 
         <h1> The value stored of variable greeting is :- {val}</h1>
+        <h1>HISTORY</h1>
+        {
+            oldval.map((item)=>{
+                return(
+                    <h6>"The address" {item.address} "changed the value to" {item.saveval}</h6>
+                )
+            })
+        }
         </>
     )
 }
