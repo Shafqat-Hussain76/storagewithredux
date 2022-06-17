@@ -1,7 +1,7 @@
 import Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ethers } from "ethers";
-const contractAddress = "0x8288E7231274FE1bEa6825825b65cB5DFf2b9EEA";// Ropsten
+const contractAddress = "0xCF6bfd813F5811a8C0124B50daa997ED5b2ead4b";// Ropsten
 
 const initialState = {
     contractProvider: null,
